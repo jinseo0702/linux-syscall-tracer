@@ -59,15 +59,10 @@ typedef union{
 } u_user_regs_struct;
 
 typedef struct s_syscall_args{
-	unsigned long long a0;
-	unsigned long long a1;
-	unsigned long long a2;
-	unsigned long long a3;
-	unsigned long long a4;
-	unsigned long long a5;
-	unsigned long long a6;
+	unsigned long long arg[6];
 	unsigned long long orig_ax;
 	unsigned long long rax;
+	int compat;
 } t_syscall_args;
 
 #endif

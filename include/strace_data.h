@@ -2,8 +2,8 @@
 #define STRACE_DATA_H
 
 #define SYS64_LIST \
-X64(SYS64_READ , 0x0 , 3 , "read" ,  ARG_FD, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
-X64(SYS64_WRITE , 0x1 , 3 , "write" ,  ARG_FD, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
+X64(SYS64_READ , 0x0 , 3 , "read" ,  ARG_FD, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
+X64(SYS64_WRITE , 0x1 , 3 , "write" ,  ARG_FD, ARG_INPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
 X64(SYS64_OPEN , 0x2 , 3 , "open" ,  ARG_STR, ARG_FLAGS, ARG_MODE, 0, 0, 0 ) \
 X64(SYS64_CLOSE , 0x3 , 1 , "close" ,  ARG_FD, 0, 0, 0, 0, 0 ) \
 X64(SYS64_NEWSTAT , 0x4 , 2 , "newstat" ,  ARG_STR, ARG_STRUCT_PTR, 0, 0, 0, 0 ) \
@@ -19,8 +19,8 @@ X64(SYS64_RT_SIGACTION , 0xd , 4 , "rt_sigaction" ,  ARG_SIGNAL, ARG_STRUCT_PTR,
 X64(SYS64_RT_SIGPROCMASK , 0xe , 4 , "rt_sigprocmask" ,  ARG_INT, ARG_SIGNAL, ARG_SIGNAL, ARG_SIZE, 0, 0 ) \
 X64(SYS64_RT_SIGRETURN , 0xf , 0 , "rt_sigreturn" ,  ARG_NONE, 0, 0, 0, 0, 0 ) \
 X64(SYS64_IOCTL , 0x10 , 3 , "ioctl" ,  ARG_FD, ARG_UINT, ARG_ULONG, 0, 0, 0 ) \
-X64(SYS64_PREAD64 , 0x11 , 4 , "pread64" ,  ARG_FD, ARG_STR, ARG_SIZE, ARG_OFFSET, 0, 0 ) \
-X64(SYS64_PWRITE64 , 0x12 , 4 , "pwrite64" ,  ARG_FD, ARG_STR, ARG_SIZE, ARG_OFFSET, 0, 0 ) \
+X64(SYS64_PREAD64 , 0x11 , 4 , "pread64" ,  ARG_FD, ARG_OUTPUT_BYTES, ARG_SIZE, ARG_OFFSET, 0, 0 ) \
+X64(SYS64_PWRITE64 , 0x12 , 4 , "pwrite64" ,  ARG_FD, ARG_INPUT_BYTES, ARG_SIZE, ARG_OFFSET, 0, 0 ) \
 X64(SYS64_READV , 0x13 , 3 , "readv" ,  ARG_FD, ARG_STRUCT_PTR, ARG_ULONG, 0, 0, 0 ) \
 X64(SYS64_WRITEV , 0x14 , 3 , "writev" ,  ARG_FD, ARG_STRUCT_PTR, ARG_ULONG, 0, 0, 0 ) \
 X64(SYS64_ACCESS , 0x15 , 2 , "access" ,  ARG_STR, ARG_INT, 0, 0, 0, 0 ) \
@@ -81,7 +81,7 @@ X64(SYS64_FDATASYNC , 0x4b , 1 , "fdatasync" ,  ARG_FD, 0, 0, 0, 0, 0 ) \
 X64(SYS64_TRUNCATE , 0x4c , 2 , "truncate" ,  ARG_STR, ARG_LONG, 0, 0, 0, 0 ) \
 X64(SYS64_FTRUNCATE , 0x4d , 2 , "ftruncate" ,  ARG_FD, ARG_OFFSET, 0, 0, 0, 0 ) \
 X64(SYS64_GETDENTS , 0x4e , 3 , "getdents" ,  ARG_FD, ARG_STRUCT_PTR, ARG_UINT, 0, 0, 0 ) \
-X64(SYS64_GETCWD , 0x4f , 2 , "getcwd" ,  ARG_STR, ARG_ULONG, 0, 0, 0, 0 ) \
+X64(SYS64_GETCWD , 0x4f , 2 , "getcwd" ,  ARG_OUTPUT_BYTES, ARG_ULONG, 0, 0, 0, 0 ) \
 X64(SYS64_CHDIR , 0x50 , 1 , "chdir" ,  ARG_STR, 0, 0, 0, 0, 0 ) \
 X64(SYS64_FCHDIR , 0x51 , 1 , "fchdir" ,  ARG_FD, 0, 0, 0, 0, 0 ) \
 X64(SYS64_RENAME , 0x52 , 2 , "rename" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
@@ -91,7 +91,7 @@ X64(SYS64_CREAT , 0x55 , 2 , "creat" ,  ARG_STR, ARG_MODE, 0, 0, 0, 0 ) \
 X64(SYS64_LINK , 0x56 , 2 , "link" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
 X64(SYS64_UNLINK , 0x57 , 1 , "unlink" ,  ARG_STR, 0, 0, 0, 0, 0 ) \
 X64(SYS64_SYMLINK , 0x58 , 2 , "symlink" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
-X64(SYS64_READLINK , 0x59 , 3 , "readlink" ,  ARG_STR, ARG_STR, ARG_INT, 0, 0, 0 ) \
+X64(SYS64_READLINK , 0x59 , 3 , "readlink" ,  ARG_STR, ARG_OUTPUT_BYTES, ARG_INT, 0, 0, 0 ) \
 X64(SYS64_CHMOD , 0x5a , 2 , "chmod" ,  ARG_STR, ARG_MODE, 0, 0, 0, 0 ) \
 X64(SYS64_FCHMOD , 0x5b , 2 , "fchmod" ,  ARG_FD, ARG_MODE, 0, 0, 0, 0 ) \
 X64(SYS64_CHOWN , 0x5c , 3 , "chown" ,  ARG_STR, ARG_UID, ARG_GID, 0, 0, 0 ) \
@@ -185,9 +185,9 @@ X64(SYS64_FSETXATTR , 0xbe , 5 , "fsetxattr" ,  ARG_FD, ARG_STR, ARG_PTR, ARG_SI
 X64(SYS64_GETXATTR , 0xbf , 4 , "getxattr" ,  ARG_STR, ARG_STR, ARG_PTR, ARG_SIZE, 0, 0 ) \
 X64(SYS64_LGETXATTR , 0xc0 , 4 , "lgetxattr" ,  ARG_STR, ARG_STR, ARG_PTR, ARG_SIZE, 0, 0 ) \
 X64(SYS64_FGETXATTR , 0xc1 , 4 , "fgetxattr" ,  ARG_FD, ARG_STR, ARG_PTR, ARG_SIZE, 0, 0 ) \
-X64(SYS64_LISTXATTR , 0xc2 , 3 , "listxattr" ,  ARG_STR, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
-X64(SYS64_LLISTXATTR , 0xc3 , 3 , "llistxattr" ,  ARG_STR, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
-X64(SYS64_FLISTXATTR , 0xc4 , 3 , "flistxattr" ,  ARG_FD, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
+X64(SYS64_LISTXATTR , 0xc2 , 3 , "listxattr" ,  ARG_STR, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
+X64(SYS64_LLISTXATTR , 0xc3 , 3 , "llistxattr" ,  ARG_STR, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
+X64(SYS64_FLISTXATTR , 0xc4 , 3 , "flistxattr" ,  ARG_FD, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
 X64(SYS64_REMOVEXATTR , 0xc5 , 2 , "removexattr" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
 X64(SYS64_LREMOVEXATTR , 0xc6 , 2 , "lremovexattr" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
 X64(SYS64_FREMOVEXATTR , 0xc7 , 2 , "fremovexattr" ,  ARG_FD, ARG_STR, 0, 0, 0, 0 ) \
@@ -227,8 +227,8 @@ X64(SYS64_SET_MEMPOLICY , 0xee , 3 , "set_mempolicy" ,  ARG_INT, ARG_FLAGS, ARG_
 X64(SYS64_GET_MEMPOLICY , 0xef , 5 , "get_mempolicy" ,  ARG_PTR, ARG_FLAGS, ARG_ULONG, ARG_ULONG, ARG_FLAGS, 0 ) \
 X64(SYS64_MQ_OPEN , 0xf0 , 4 , "mq_open" ,  ARG_STR, ARG_FLAGS, ARG_MODE, ARG_STRUCT_PTR, 0, 0 ) \
 X64(SYS64_MQ_UNLINK , 0xf1 , 1 , "mq_unlink" ,  ARG_STR, 0, 0, 0, 0, 0 ) \
-X64(SYS64_MQ_TIMEDSEND , 0xf2 , 5 , "mq_timedsend" ,  ARG_INT, ARG_STR, ARG_SIZE, ARG_UINT, ARG_STRUCT_PTR, 0 ) \
-X64(SYS64_MQ_TIMEDRECEIVE , 0xf3 , 5 , "mq_timedreceive" ,  ARG_INT, ARG_STR, ARG_SIZE, ARG_PTR, ARG_STRUCT_PTR, 0 ) \
+X64(SYS64_MQ_TIMEDSEND , 0xf2 , 5 , "mq_timedsend" ,  ARG_INT, ARG_INPUT_BYTES, ARG_SIZE, ARG_UINT, ARG_STRUCT_PTR, 0 ) \
+X64(SYS64_MQ_TIMEDRECEIVE , 0xf3 , 5 , "mq_timedreceive" ,  ARG_INT, ARG_OUTPUT_BYTES, ARG_SIZE, ARG_PTR, ARG_STRUCT_PTR, 0 ) \
 X64(SYS64_MQ_NOTIFY , 0xf4 , 2 , "mq_notify" ,  ARG_INT, ARG_STRUCT_PTR, 0, 0, 0, 0 ) \
 X64(SYS64_MQ_GETSETATTR , 0xf5 , 3 , "mq_getsetattr" ,  ARG_INT, ARG_STRUCT_PTR, ARG_STRUCT_PTR, 0, 0, 0 ) \
 X64(SYS64_KEXEC_LOAD , 0xf6 , 4 , "kexec_load" ,  ARG_ULONG, ARG_ULONG, ARG_STRUCT_PTR, ARG_FLAGS, 0, 0 ) \
@@ -252,7 +252,7 @@ X64(SYS64_UNLINKAT , 0x107 , 3 , "unlinkat" ,  ARG_INT, ARG_STR, ARG_FLAGS, 0, 0
 X64(SYS64_RENAMEAT , 0x108 , 4 , "renameat" ,  ARG_INT, ARG_STR, ARG_INT, ARG_STR, 0, 0 ) \
 X64(SYS64_LINKAT , 0x109 , 5 , "linkat" ,  ARG_INT, ARG_STR, ARG_INT, ARG_STR, ARG_FLAGS, 0 ) \
 X64(SYS64_SYMLINKAT , 0x10a , 3 , "symlinkat" ,  ARG_STR, ARG_INT, ARG_STR, 0, 0, 0 ) \
-X64(SYS64_READLINKAT , 0x10b , 4 , "readlinkat" ,  ARG_INT, ARG_STR, ARG_STR, ARG_INT, 0, 0 ) \
+X64(SYS64_READLINKAT , 0x10b , 4 , "readlinkat" ,  ARG_INT, ARG_STR, ARG_OUTPUT_BYTES, ARG_INT, 0, 0 ) \
 X64(SYS64_FCHMODAT , 0x10c , 3 , "fchmodat" ,  ARG_INT, ARG_STR, ARG_MODE, 0, 0, 0 ) \
 X64(SYS64_FACCESSAT , 0x10d , 3 , "faccessat" ,  ARG_INT, ARG_STR, ARG_INT, 0, 0, 0 ) \
 X64(SYS64_PSELECT6 , 0x10e , 6 , "pselect6" ,  ARG_INT, ARG_PTR, ARG_PTR, ARG_PTR, ARG_STRUCT_PTR, ARG_PTR ) \
@@ -303,7 +303,7 @@ X64(SYS64_SCHED_SETATTR , 0x13a , 3 , "sched_setattr" ,  ARG_PID, ARG_STRUCT_PTR
 X64(SYS64_SCHED_GETATTR , 0x13b , 4 , "sched_getattr" ,  ARG_PID, ARG_STRUCT_PTR, ARG_UINT, ARG_FLAGS, 0, 0 ) \
 X64(SYS64_RENAMEAT2 , 0x13c , 5 , "renameat2" ,  ARG_INT, ARG_STR, ARG_INT, ARG_STR, ARG_FLAGS, 0 ) \
 X64(SYS64_SECCOMP , 0x13d , 3 , "seccomp" ,  ARG_UINT, ARG_FLAGS, ARG_PTR, 0, 0, 0 ) \
-X64(SYS64_GETRANDOM , 0x13e , 3 , "getrandom" ,  ARG_STR, ARG_SIZE, ARG_FLAGS, 0, 0, 0 ) \
+X64(SYS64_GETRANDOM , 0x13e , 3 , "getrandom" ,  ARG_OUTPUT_BYTES, ARG_SIZE, ARG_FLAGS, 0, 0, 0 ) \
 X64(SYS64_MEMFD_CREATE , 0x13f , 2 , "memfd_create" ,  ARG_STR, ARG_FLAGS, 0, 0, 0, 0 ) \
 X64(SYS64_KEXEC_FILE_LOAD , 0x140 , 5 , "kexec_file_load" ,  ARG_INT, ARG_INT, ARG_ULONG, ARG_STR, ARG_FLAGS, 0 ) \
 X64(SYS64_BPF , 0x141 , 3 , "bpf" ,  ARG_INT, ARG_PTR, ARG_UINT, 0, 0, 0 ) \
@@ -362,7 +362,7 @@ X64(SYS64_LSM_LIST_MODULES , 0x1cd , 3 , "lsm_list_modules" ,  ARG_PTR, ARG_PTR,
 X64(SYS64_MSEAL , 0x1ce , 3 , "mseal" ,  ARG_ULONG, ARG_SIZE, ARG_FLAGS, 0, 0, 0 ) \
 X64(SYS64_SETXATTRAT , 0x1cf , 6 , "setxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, ARG_STRUCT_PTR, ARG_SIZE ) \
 X64(SYS64_GETXATTRAT , 0x1d0 , 6 , "getxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, ARG_STRUCT_PTR, ARG_SIZE ) \
-X64(SYS64_LISTXATTRAT , 0x1d1 , 5 , "listxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, ARG_SIZE, 0 ) \
+X64(SYS64_LISTXATTRAT , 0x1d1 , 5 , "listxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_OUTPUT_BYTES, ARG_SIZE, 0 ) \
 X64(SYS64_REMOVEXATTRAT , 0x1d2 , 4 , "removexattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, 0, 0 ) \
 X64(SYS64_OPEN_TREE_ATTR , 0x1d3 , 5 , "open_tree_attr" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STRUCT_PTR, ARG_SIZE, 0 ) \
 X64(SYS64_FILE_GETATTR , 0x1d4 , 5 , "file_getattr" ,  ARG_INT, ARG_STR, ARG_STRUCT_PTR, ARG_SIZE, ARG_FLAGS, 0 ) \
@@ -372,8 +372,8 @@ X64(SYS64_FILE_SETATTR , 0x1d5 , 5 , "file_setattr" ,  ARG_INT, ARG_STR, ARG_STR
 X32(SYS32_RESTART_SYSCALL , 0x0 , 0 , "restart_syscall" ,  ARG_NONE, 0, 0, 0, 0, 0 ) \
 X32(SYS32_EXIT , 0x1 , 1 , "exit" ,  ARG_INT, 0, 0, 0, 0, 0 ) \
 X32(SYS32_FORK , 0x2 , 0 , "fork" ,  ARG_NONE, 0, 0, 0, 0, 0 ) \
-X32(SYS32_READ , 0x3 , 3 , "read" ,  ARG_FD, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
-X32(SYS32_WRITE , 0x4 , 3 , "write" ,  ARG_FD, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
+X32(SYS32_READ , 0x3 , 3 , "read" ,  ARG_FD, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
+X32(SYS32_WRITE , 0x4 , 3 , "write" ,  ARG_FD, ARG_INPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
 X32(SYS32_OPEN , 0x5 , 3 , "open" ,  ARG_STR, ARG_FLAGS, ARG_MODE, 0, 0, 0 ) \
 X32(SYS32_CLOSE , 0x6 , 1 , "close" ,  ARG_FD, 0, 0, 0, 0, 0 ) \
 X32(SYS32_WAITPID , 0x7 , 3 , "waitpid" ,  ARG_PID, ARG_PTR, ARG_INT, 0, 0, 0 ) \
@@ -446,7 +446,7 @@ X32(SYS32_SETGROUPS16 , 0x51 , 2 , "setgroups16" ,  ARG_INT, ARG_GID, 0, 0, 0, 0
 X32(SYS32_OLDSELECT , 0x52 , 1 , "select" ,  ARG_STRUCT_PTR, 0, 0, 0, 0, 0 ) \
 X32(SYS32_SYMLINK , 0x53 , 2 , "symlink" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
 X32(SYS32_LSTAT , 0x54 , 2 , "lstat" ,  ARG_STR, ARG_STRUCT_PTR, 0, 0, 0, 0 ) \
-X32(SYS32_READLINK , 0x55 , 3 , "readlink" ,  ARG_STR, ARG_STR, ARG_INT, 0, 0, 0 ) \
+X32(SYS32_READLINK , 0x55 , 3 , "readlink" ,  ARG_STR, ARG_OUTPUT_BYTES, ARG_INT, 0, 0, 0 ) \
 X32(SYS32_SWAPON , 0x57 , 2 , "swapon" ,  ARG_STR, ARG_FLAGS, 0, 0, 0, 0 ) \
 X32(SYS32_REBOOT , 0x58 , 4 , "reboot" ,  ARG_INT, ARG_INT, ARG_UINT, ARG_PTR, 0, 0 ) \
 X32(SYS32_READDIR , 0x59 , 3 , "readdir" ,  ARG_FD, ARG_STRUCT_PTR, ARG_UINT, 0, 0, 0 ) \
@@ -531,10 +531,10 @@ X32(SYS32_RT_SIGPENDING , 0xb0 , 2 , "rt_sigpending" ,  ARG_SIGNAL, ARG_SIZE, 0,
 X32(SYS32_OLDRT_SIGTIMEDWAIT , 0xb1 , 4 , "rt_sigtimedwait" ,  ARG_SIGNAL, ARG_PTR, ARG_STRUCT_PTR, ARG_SIZE, 0, 0 ) \
 X32(SYS32_RT_SIGQUEUEINFO , 0xb2 , 3 , "rt_sigqueueinfo" ,  ARG_PID, ARG_SIGNAL, ARG_PTR, 0, 0, 0 ) \
 X32(SYS32_RT_SIGSUSPEND , 0xb3 , 2 , "rt_sigsuspend" ,  ARG_SIGNAL, ARG_SIZE, 0, 0, 0, 0 ) \
-X32(SYS32_PREAD64 , 0xb4 , 5 , "pread64" ,  ARG_FD, ARG_STR, ARG_INT, ARG_INT, ARG_INT, 0 ) \
-X32(SYS32_PWRITE64 , 0xb5 , 5 , "pwrite64" ,  ARG_FD, ARG_STR, ARG_INT, ARG_INT, ARG_INT, 0 ) \
+X32(SYS32_PREAD64 , 0xb4 , 5 , "pread64" ,  ARG_FD, ARG_OUTPUT_BYTES, ARG_INT, ARG_INT, ARG_INT, 0 ) \
+X32(SYS32_PWRITE64 , 0xb5 , 5 , "pwrite64" ,  ARG_FD, ARG_INPUT_BYTES, ARG_INT, ARG_INT, ARG_INT, 0 ) \
 X32(SYS32_CHOWN16 , 0xb6 , 3 , "chown16" ,  ARG_STR, ARG_UID, ARG_GID, 0, 0, 0 ) \
-X32(SYS32_GETCWD , 0xb7 , 2 , "getcwd" ,  ARG_STR, ARG_ULONG, 0, 0, 0, 0 ) \
+X32(SYS32_GETCWD , 0xb7 , 2 , "getcwd" ,  ARG_OUTPUT_BYTES, ARG_ULONG, 0, 0, 0, 0 ) \
 X32(SYS32_CAPGET , 0xb8 , 2 , "capget" ,  ARG_INT, ARG_INT, 0, 0, 0, 0 ) \
 X32(SYS32_CAPSET , 0xb9 , 2 , "capset" ,  ARG_INT, ARG_INT, 0, 0, 0, 0 ) \
 X32(SYS32_SIGALTSTACK , 0xba , 2 , "sigaltstack" ,  ARG_PTR, ARG_PTR, 0, 0, 0, 0 ) \
@@ -579,9 +579,9 @@ X32(SYS32_FSETXATTR , 0xe4 , 5 , "fsetxattr" ,  ARG_FD, ARG_STR, ARG_PTR, ARG_SI
 X32(SYS32_GETXATTR , 0xe5 , 4 , "getxattr" ,  ARG_STR, ARG_STR, ARG_PTR, ARG_SIZE, 0, 0 ) \
 X32(SYS32_LGETXATTR , 0xe6 , 4 , "lgetxattr" ,  ARG_STR, ARG_STR, ARG_PTR, ARG_SIZE, 0, 0 ) \
 X32(SYS32_FGETXATTR , 0xe7 , 4 , "fgetxattr" ,  ARG_FD, ARG_STR, ARG_PTR, ARG_SIZE, 0, 0 ) \
-X32(SYS32_LISTXATTR , 0xe8 , 3 , "listxattr" ,  ARG_STR, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
-X32(SYS32_LLISTXATTR , 0xe9 , 3 , "llistxattr" ,  ARG_STR, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
-X32(SYS32_FLISTXATTR , 0xea , 3 , "flistxattr" ,  ARG_FD, ARG_STR, ARG_SIZE, 0, 0, 0 ) \
+X32(SYS32_LISTXATTR , 0xe8 , 3 , "listxattr" ,  ARG_STR, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
+X32(SYS32_LLISTXATTR , 0xe9 , 3 , "llistxattr" ,  ARG_STR, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
+X32(SYS32_FLISTXATTR , 0xea , 3 , "flistxattr" ,  ARG_FD, ARG_OUTPUT_BYTES, ARG_SIZE, 0, 0, 0 ) \
 X32(SYS32_REMOVEXATTR , 0xeb , 2 , "removexattr" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
 X32(SYS32_LREMOVEXATTR , 0xec , 2 , "lremovexattr" ,  ARG_STR, ARG_STR, 0, 0, 0, 0 ) \
 X32(SYS32_FREMOVEXATTR , 0xed , 2 , "fremovexattr" ,  ARG_FD, ARG_STR, 0, 0, 0, 0 ) \
@@ -620,8 +620,8 @@ X32(SYS32_UTIMES , 0x10f , 2 , "utimes" ,  ARG_STR, ARG_STRUCT_PTR, 0, 0, 0, 0 )
 X32(SYS32_FADVISE64_64 , 0x110 , 6 , "fadvise64_64" ,  ARG_FD, ARG_INT, ARG_INT, ARG_INT, ARG_INT, ARG_INT ) \
 X32(SYS32_MQ_OPEN , 0x115 , 4 , "mq_open" ,  ARG_STR, ARG_FLAGS, ARG_MODE, ARG_STRUCT_PTR, 0, 0 ) \
 X32(SYS32_MQ_UNLINK , 0x116 , 1 , "mq_unlink" ,  ARG_STR, 0, 0, 0, 0, 0 ) \
-X32(SYS32_OLDMQ_TIMEDSEND , 0x117 , 5 , "mq_timedsend" ,  ARG_INT, ARG_STR, ARG_UINT, ARG_UINT, ARG_STRUCT_PTR, 0 ) \
-X32(SYS32_OLDMQ_TIMEDRECEIVE , 0x118 , 5 , "mq_timedreceive" ,  ARG_INT, ARG_STR, ARG_UINT, ARG_PTR, ARG_STRUCT_PTR, 0 ) \
+X32(SYS32_OLDMQ_TIMEDSEND , 0x117 , 5 , "mq_timedsend" ,  ARG_INT, ARG_INPUT_BYTES, ARG_UINT, ARG_UINT, ARG_STRUCT_PTR, 0 ) \
+X32(SYS32_OLDMQ_TIMEDRECEIVE , 0x118 , 5 , "mq_timedreceive" ,  ARG_INT, ARG_OUTPUT_BYTES, ARG_UINT, ARG_PTR, ARG_STRUCT_PTR, 0 ) \
 X32(SYS32_MQ_NOTIFY , 0x119 , 2 , "mq_notify" ,  ARG_INT, ARG_STRUCT_PTR, 0, 0, 0, 0 ) \
 X32(SYS32_MQ_GETSETATTR , 0x11a , 3 , "mq_getsetattr" ,  ARG_INT, ARG_STRUCT_PTR, ARG_STRUCT_PTR, 0, 0, 0 ) \
 X32(SYS32_KEXEC_LOAD , 0x11b , 4 , "kexec_load" ,  ARG_ULONG, ARG_ULONG, ARG_STRUCT_PTR, ARG_FLAGS, 0, 0 ) \
@@ -644,7 +644,7 @@ X32(SYS32_UNLINKAT , 0x12d , 3 , "unlinkat" ,  ARG_INT, ARG_STR, ARG_FLAGS, 0, 0
 X32(SYS32_RENAMEAT , 0x12e , 4 , "renameat" ,  ARG_INT, ARG_STR, ARG_INT, ARG_STR, 0, 0 ) \
 X32(SYS32_LINKAT , 0x12f , 5 , "linkat" ,  ARG_INT, ARG_STR, ARG_INT, ARG_STR, ARG_FLAGS, 0 ) \
 X32(SYS32_SYMLINKAT , 0x130 , 3 , "symlinkat" ,  ARG_STR, ARG_INT, ARG_STR, 0, 0, 0 ) \
-X32(SYS32_READLINKAT , 0x131 , 4 , "readlinkat" ,  ARG_INT, ARG_STR, ARG_STR, ARG_INT, 0, 0 ) \
+X32(SYS32_READLINKAT , 0x131 , 4 , "readlinkat" ,  ARG_INT, ARG_STR, ARG_OUTPUT_BYTES, ARG_INT, 0, 0 ) \
 X32(SYS32_FCHMODAT , 0x132 , 3 , "fchmodat" ,  ARG_INT, ARG_STR, ARG_MODE, 0, 0, 0 ) \
 X32(SYS32_FACCESSAT , 0x133 , 3 , "faccessat" ,  ARG_INT, ARG_STR, ARG_INT, 0, 0, 0 ) \
 X32(SYS32_OLDPSELECT6 , 0x134 , 6 , "pselect6" ,  ARG_INT, ARG_PTR, ARG_PTR, ARG_PTR, ARG_STRUCT_PTR, ARG_PTR ) \
@@ -693,7 +693,7 @@ X32(SYS32_SCHED_SETATTR , 0x15f , 3 , "sched_setattr" ,  ARG_PID, ARG_STRUCT_PTR
 X32(SYS32_SCHED_GETATTR , 0x160 , 4 , "sched_getattr" ,  ARG_PID, ARG_STRUCT_PTR, ARG_UINT, ARG_FLAGS, 0, 0 ) \
 X32(SYS32_RENAMEAT2 , 0x161 , 5 , "renameat2" ,  ARG_INT, ARG_STR, ARG_INT, ARG_STR, ARG_FLAGS, 0 ) \
 X32(SYS32_SECCOMP , 0x162 , 3 , "seccomp" ,  ARG_UINT, ARG_FLAGS, ARG_PTR, 0, 0, 0 ) \
-X32(SYS32_GETRANDOM , 0x163 , 3 , "getrandom" ,  ARG_STR, ARG_SIZE, ARG_FLAGS, 0, 0, 0 ) \
+X32(SYS32_GETRANDOM , 0x163 , 3 , "getrandom" ,  ARG_OUTPUT_BYTES, ARG_SIZE, ARG_FLAGS, 0, 0, 0 ) \
 X32(SYS32_MEMFD_CREATE , 0x164 , 2 , "memfd_create" ,  ARG_STR, ARG_FLAGS, 0, 0, 0, 0 ) \
 X32(SYS32_BPF , 0x165 , 3 , "bpf" ,  ARG_INT, ARG_PTR, ARG_UINT, 0, 0, 0 ) \
 X32(SYS32_EXECVEAT , 0x166 , 5 , "execveat" ,  ARG_FD, ARG_STR, ARG_VSTR, ARG_PTR, ARG_FLAGS, 0 ) \
@@ -746,8 +746,8 @@ X32(SYS32_NEWPSELECT6 , 0x19d , 6 , "pselect6" ,  ARG_INT, ARG_PTR, ARG_PTR, ARG
 X32(SYS32_NEWPPOLL , 0x19e , 5 , "ppoll" ,  ARG_STRUCT_PTR, ARG_UINT, ARG_STRUCT_PTR, ARG_SIGNAL, ARG_SIZE, 0 ) \
 X32(SYS32_NEWIO_PGETEVENTS , 0x1a0 , 6 , "io_pgetevents" ,  ARG_INT, ARG_LONG, ARG_LONG, ARG_STRUCT_PTR, ARG_STRUCT_PTR, ARG_STRUCT_PTR ) \
 X32(SYS32_NEWRECVMMSG , 0x1a1 , 5 , "recvmmsg" ,  ARG_FD, ARG_STRUCT_PTR, ARG_UINT, ARG_FLAGS, ARG_STRUCT_PTR, 0 ) \
-X32(SYS32_NEWMQ_TIMEDSEND , 0x1a2 , 5 , "mq_timedsend" ,  ARG_INT, ARG_STR, ARG_SIZE, ARG_UINT, ARG_STRUCT_PTR, 0 ) \
-X32(SYS32_NEWMQ_TIMEDRECEIVE , 0x1a3 , 5 , "mq_timedreceive" ,  ARG_INT, ARG_STR, ARG_SIZE, ARG_PTR, ARG_STRUCT_PTR, 0 ) \
+X32(SYS32_NEWMQ_TIMEDSEND , 0x1a2 , 5 , "mq_timedsend" ,  ARG_INT, ARG_INPUT_BYTES, ARG_SIZE, ARG_UINT, ARG_STRUCT_PTR, 0 ) \
+X32(SYS32_NEWMQ_TIMEDRECEIVE , 0x1a3 , 5 , "mq_timedreceive" ,  ARG_INT, ARG_OUTPUT_BYTES, ARG_SIZE, ARG_PTR, ARG_STRUCT_PTR, 0 ) \
 X32(SYS32_SEMTIMEDOP , 0x1a4 , 4 , "semtimedop" ,  ARG_INT, ARG_STRUCT_PTR, ARG_UINT, ARG_STRUCT_PTR, 0, 0 ) \
 X32(SYS32_NEWRT_SIGTIMEDWAIT , 0x1a5 , 4 , "rt_sigtimedwait" ,  ARG_SIGNAL, ARG_PTR, ARG_STRUCT_PTR, ARG_SIZE, 0, 0 ) \
 X32(SYS32_NEWFUTEX , 0x1a6 , 6 , "futex" ,  ARG_PTR, ARG_INT, ARG_INT, ARG_STRUCT_PTR, ARG_PTR, ARG_INT ) \
@@ -790,7 +790,7 @@ X32(SYS32_LSM_SET_SELF_ATTR , 0x1cc , 4 , "lsm_set_self_attr" ,  ARG_UINT, ARG_S
 X32(SYS32_LSM_LIST_MODULES , 0x1cd , 3 , "lsm_list_modules" ,  ARG_PTR, ARG_PTR, ARG_FLAGS, 0, 0, 0 ) \
 X32(SYS32_SETXATTRAT , 0x1cf , 6 , "setxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, ARG_STRUCT_PTR, ARG_SIZE ) \
 X32(SYS32_GETXATTRAT , 0x1d0 , 6 , "getxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, ARG_STRUCT_PTR, ARG_SIZE ) \
-X32(SYS32_LISTXATTRAT , 0x1d1 , 5 , "listxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, ARG_SIZE, 0 ) \
+X32(SYS32_LISTXATTRAT , 0x1d1 , 5 , "listxattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_OUTPUT_BYTES, ARG_SIZE, 0 ) \
 X32(SYS32_REMOVEXATTRAT , 0x1d2 , 4 , "removexattrat" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STR, 0, 0 ) \
 X32(SYS32_OPEN_TREE_ATTR , 0x1d3 , 5 , "open_tree_attr" ,  ARG_INT, ARG_STR, ARG_FLAGS, ARG_STRUCT_PTR, ARG_SIZE, 0 ) \
 X32(SYS32_FILE_GETATTR , 0x1d4 , 5 , "file_getattr" ,  ARG_INT, ARG_STR, ARG_STRUCT_PTR, ARG_SIZE, ARG_FLAGS, 0 ) \
@@ -804,6 +804,8 @@ typedef enum e_ARGTYPE{
 	ARG_NONE,
 	ARG_FD,
 	ARG_STR,
+	ARG_INPUT_BYTES,
+	ARG_OUTPUT_BYTES,
 	ARG_VSTR,
 	ARG_FLAGS,
 	ARG_MODE,
@@ -833,34 +835,22 @@ typedef enum e_SYS32{
 	#undef X32
 } e_SYS32 ;
 
-typedef struct S_SYS64_TABLE {
-	const char	*name;
-	int		argCount;
-	int		argType[6];
-} t_SYS64_TABLE;
-
-typedef struct S_SYS32_TABLE {
-	const char	*name;
-	int		argCount;
-	int		argType[6];
-} t_SYS32_TABLE;
-
 typedef struct S_SYS_TABLE {
 	const char	*name;
 	int		argCount;
 	int		argType[6];
 } t_SYS_TABLE;
 
-static const t_SYS64_TABLE get_SYS64_TABLE[] = {
+static const t_SYS_TABLE get_SYS64_TABLE[] = {
 	#define X64(id, number, count, str, a0, a1, a2, a3, a4, a5) [id] = {str, count, {a0, a1, a2, a3, a4, a5}},
 	SYS64_LIST
 	#undef X64
 };
 
-static const t_SYS32_TABLE get_SYS32_TABLE[] = {
+static const t_SYS_TABLE get_SYS32_TABLE[] = {
 	#define X32(id, number, count, str, a0, a1, a2, a3, a4, a5) [id] = {str, count, {a0, a1, a2, a3, a4, a5}},
 	SYS32_LIST
 	#undef X32
 };
 
-# endif	
+# endif
